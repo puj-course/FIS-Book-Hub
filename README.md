@@ -1,117 +1,62 @@
-# FIS Pet vet
-## Descripción de cada directorio y archivos
-```bash
-project-name/
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md
-│   │   ├── feature_request.md
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   └── workflows/
-│       ├── ci.yml
-│       └── cd.yml
-├── conf/
-│   ├── config.yaml
-│   └── settings.json
-├── docs/
-│   ├── api/
-│   ├── architecture/
-│   └── user_guide/
-├── jupyter/
-│   ├── notebooks/
-│   │   ├── exploration.ipynb
-│   │   └── analysis.ipynb
-│   └── datasets/
-│       ├── data1.csv
-│       └── data2.csv
-├── scripts/
-│   ├── setup.sh
-│   ├── deploy.sh
-│   └── test.sh
-├── src/
-│   ├── main/
-│   │   ├── java/ (o python/, etc. según el lenguaje)
-│   │   └── resources/
-│   ├── test/
-│   │   ├── java/ (o python/, etc. según el lenguaje)
-│   │   └── resources/
-├── temp/
-│   ├── temp_file.txt
-│   └── temp_data/
-│       ├── temp1.tmp
-│       └── temp2.tmp
-├── .gitignore
-├── README.md
-├── LICENSE
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── Dockerfile
-├── docker-compose.yml
-└── Makefile
-```
+# 📚 FIS BookHub – Gestión de Biblioteca Digital
 
+## Descripción
 
-### .github/
-Contiene configuraciones específicas para GitHub, como plantillas para problemas (issues) y solicitudes de extracción (pull requests), y flujos de trabajo de GitHub Actions para integración continua (CI) y despliegue continuo (CD).
+**FIS BookHub** es un sistema diseñado para modernizar y digitalizar la gestión de una biblioteca universitaria. Este sistema permite a los bibliotecarios registrar libros disponibles, gestionar los préstamos y devoluciones, así como hacer el seguimiento de los usuarios que acceden al servicio. Además, proporciona al administrador de la biblioteca un portal para analizar de manera sencilla los datos del sistema.
 
-- `ISSUE_TEMPLATE/`: Plantillas para reportar bugs y solicitar nuevas características.
-- `workflows/`: Archivos YAML para definir los flujos de trabajo de CI/CD.
+## Requerimientos del Sistema
 
-### docs/
-Documentación del proyecto.
+### 📖 Gestión de Libros
+Los bibliotecarios pueden registrar libros con los siguientes datos:
+- Título
+- Autor
+- Género
+- Año de publicación
+- Número de copias disponibles
 
-- `api/`: Documentación de la API.
-- `architecture/`: Diagramas y documentación de la arquitectura.
-- `user_guide/`: Guías para usuarios.
+### 📅 Gestión de Préstamos
+Los usuarios (estudiantes y profesores) pueden solicitar el préstamo de libros. Cada préstamo incluye:
+- Usuario solicitante: Nombre, Apellido, DNI, Correo, Teléfono, Tipo (Estudiante/Profesor)
+- Libro solicitado
+- Fecha de préstamo
+- Fecha de devolución estimada
+- Estado del préstamo (Prestado, Devuelto, Retrasado)
 
-### src/
-Código fuente del proyecto.
+### 🔄 Gestión de Devoluciones
+Los bibliotecarios pueden registrar devoluciones y verificar retrasos en las entregas.
 
-- `main/`: Código fuente principal.
-  - `java/` (o `python/`, etc.): Código fuente del proyecto según el lenguaje utilizado.
-  - `resources/`: Archivos de recursos como configuraciones y otros archivos necesarios.
-- `test/`: Código de pruebas.
-  - `java/` (o `python/`, etc.): Código de pruebas unitarias y de integración.
-  - `resources/`: Archivos de recursos para las pruebas.
+### 🛠 Portal de Administrador
+Finalmente, el administrador de la biblioteca desea un portal donde pueda analizar de manera sencilla los datos del sistema, incluyendo:
 
-### scripts/
-Scripts útiles para tareas comunes como configuración, despliegue y pruebas.
+- Cantidad total de libros disponibles
+- Cantidad de préstamos activos
+- Cantidad de libros devueltos en el último mes
+- Lista de usuarios con retrasos en la devolución de libros
 
-- `setup.sh`: Script para configurar el entorno de desarrollo.
-- `deploy.sh`: Script para despliegue.
-- `test.sh`: Script para ejecutar pruebas.
+## Objetivos del Proyecto
 
-### conf/
-Carpeta para archivos de configuración.
+### 1️⃣ Identificar Historias de Usuario
+Las historias de usuario permiten identificar los requerimientos del sistema y las funcionalidades clave. Estas historias serán la base para la creación de los "issues" en el proyecto de GitHub.
 
-- `config.yaml`: Archivo de configuración en formato YAML.
-- `settings.json`: Archivo de configuración en formato JSON.
+### 2️⃣ Crear "Issues" de las Historias de Usuario en GitHub
+Para cada historia de usuario, se creará un "issue" en el repositorio de GitHub. Cada "issue" debe contener:
+- 👤 Persona asignada (Distribución de tareas entre los integrantes del equipo)
+- 🏷 Etiqueta
+- ⚡ Prioridad
+- 📏 Tamaño
+- ⏱ Estimación
+- 🗓 Sprint (Distribución de los "issues" en 4 sprints)
+- 🎯 Milestone (Épica de la historia)
 
-### jupyter/
-Carpeta para los notebooks de Jupyter y datasets utilizados.
+### 3️⃣ Implementar la Estructura de Clases del Sistema
+El sistema será implementado utilizando una estructura de clases que refleje los objetos clave del sistema como "Libro", "Usuario", "Préstamo", y "Administrador".
 
-- `notebooks/`: Carpeta para los notebooks de Jupyter.
-  - `exploration.ipynb`: Notebook para la exploración de datos.
-  - `analysis.ipynb`: Notebook para el análisis de datos.
-- `datasets/`: Carpeta para los datasets utilizados en los notebooks.
-  - `data1.csv`: Ejemplo de dataset en formato CSV.
-  - `data2.csv`: Otro ejemplo de dataset en formato CSV.
+### 4️⃣ Uso de Git
+- 🧑‍💻 El equipo creará una rama a partir de la rama “Develop” y asignará un nombre relacionado con el equipo.
+- 🔄 Cada miembro del equipo desarrollará sus funcionalidades en su propia rama y, una vez completado, realizará un merge a la rama “Develop”.
 
-### temp/
-Carpeta para archivos temporales.
-
-- `temp_file.txt`: Archivo temporal de ejemplo.
-- `temp_data/`: Subcarpeta para datos temporales.
-  - `temp1.tmp`: Archivo temporal de ejemplo.
-  - `temp2.tmp`: Otro archivo temporal de ejemplo.
-
-### Archivos en la raíz del proyecto
-
-- `.gitignore`: Archivo para especificar qué archivos y directorios deben ser ignorados por Git.
-- `README.md`: Descripción general del proyecto, instrucciones de instalación, uso, contribución, etc.
-- `LICENSE`: Información sobre la licencia del proyecto.
-- `CHANGELOG.md`: Registro de cambios en el proyecto.
-- `CONTRIBUTING.md`: Guía para contribuir al proyecto.
-- `Dockerfile`: Archivo para construir la imagen Docker del proyecto.
-- `docker-compose.yml`: Archivo de configuración para Docker Compose.
-- `Makefile`: Archivo para automatizar tareas mediante comandos `make`.
+### 5️⃣ Entrega Final
+El equipo entregará un documento detallado que incluya:
+- 📂 Gestión de las carpetas del repositorio (Boilerplate)
+- 🧩 Gestión de Scrum (Planificación y asignación de tareas)
+- 📑 Uso de Git (Flujo de trabajo, ramas, merges)
