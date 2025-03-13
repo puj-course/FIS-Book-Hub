@@ -21,4 +21,8 @@ public class Administrador {
     public void analizarDatos() {
         // Aquí iría la implementación de analizarDatos()
     }
+
+    public void cantidadLibrosDisponibles() {
+        // Aquí iría la implementación de cantidadLibrosDisponibles()
+    }
 }
