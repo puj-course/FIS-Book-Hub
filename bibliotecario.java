@@ -8,15 +8,15 @@ public class bibliotecario {
     }
 
     public void registrarLibro(Libro libro) {
-        
+       libro.registrarLibro();   
     }
 
     public void verificarRetrasos() {
-       
+       prestamo.verificarRetraso();
     }
 
     public void registrarDevolucion(Prestamo prestamo) {
-   
+        prestamo.registrarDevolucion();
     }
 
    
