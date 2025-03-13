@@ -33,4 +33,8 @@ public class Administrador {
     public void cantidadLibrosDevueltosUltimoMes() {
         // Aquí iría la implementación de cantidadLibrosDevueltosUltimoMes()
     }
+
+    public void listarUsuariosConRetrasos() {
+        // Aquí iría la implementación de listarUsuariosConRetrasos()
+    }
 }
