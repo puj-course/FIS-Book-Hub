@@ -17,11 +17,13 @@ public class Libro {
 	    }
 
 	    public void registrarLibro() {
-	        
+	                System.out.println("Libro registrado: " + titulo);
+
 	    }
 
 	    public void actualizarCopiasDisponibles(int cantidad) {
-	       
+	               this.numeroCopiasDisponibles += cantidad;
+
 	    }
 
 }
