@@ -15,4 +15,15 @@ public class Admin {
         //Devuelve la cantidad de libros disponibles en el sistema
         return numLibros;
     }
+
+    private void listarUsuariosConRetraso (Usuario[] usuarios) {
+        
+        for (int i = 0; i < usuarios.length; i++) {
+            if (usuarios[i].tieneRetraso()) {
+                System.out.println(usuarios[i].nombre);
+            }
+        }
+    }
+
+
 }
