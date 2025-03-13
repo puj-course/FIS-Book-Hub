@@ -1,3 +1,4 @@
+// Clase Administrador
 public class Administrador {
 
     // Atributo
