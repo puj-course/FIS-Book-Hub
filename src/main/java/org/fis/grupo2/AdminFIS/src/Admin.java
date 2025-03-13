@@ -25,5 +25,23 @@ public class Admin {
         }
     }
 
+    private int cantidadPrestamosActivos (Usuario[] usuarios) {
+        int numPrestamos = 0;
+        for (int i = 0; i < usuarios.length; i++) {
+            numPrestamos += usuarios[i].cantidadPrestamosActivos();
+        }
+        System.out.println(numPrestamos);
+        return numPrestamos;
+    }
+
+    private int cantidadLibrosDevueltosUltimoMes (Usuario[] usuarios) {
+        int numLibros = 0;
+        for (int i = 0; i < usuarios.length; i++) {
+            numLibros += usuarios[i].cantidadLibrosDevueltosUltimoMes();
+        }
+        System.out.println(numLibros);
+        return numLibros;
+    }
+
 
 }
