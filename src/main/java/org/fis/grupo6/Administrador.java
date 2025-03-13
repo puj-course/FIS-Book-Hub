@@ -7,18 +7,6 @@ public class Administrador {
         System.out.println("Analizando datos...");
     }
 
-    public void cantidadLibrosDisponibles() {
-        System.out.println("100 libros disponibles");
-    }
-
-    public void cantidadPrestamosActivos() {
-        System.out.println("15 préstamos activos");
-    }
-
-    public void cantidadLibrosDevueltosUltimoMes() {
-        System.out.println("5 libros devueltos");
-    }
-
     public void listarUsuariosConRetrasos() {
         System.out.println("Usuarios con retrasos: 3");
     }
