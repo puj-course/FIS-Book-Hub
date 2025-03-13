@@ -29,7 +29,7 @@ public class Administrador extends Usuario{
         // Implementación pendiente
         return 0;
     }
-
+//hoal
     public List<String> listarUsuariosConRetrasos() {
         // Implementación pendiente
         return new ArrayList<>();
