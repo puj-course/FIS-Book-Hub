@@ -4,7 +4,7 @@ public class Administrador {
     public int idAdministrador;
 
     public void analizarDatos() {
-        System.out.println("Analizando datos...");
+        System.out.println("Analizando datos......");
     }
 
     public void listarUsuariosConRetrasos() {
