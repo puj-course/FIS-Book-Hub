@@ -1,0 +1,24 @@
+public class Administrador {
+
+    // Atributo
+    private int idAdministrador;
+
+    // Constructor
+    public Administrador(int idAdministrador) {
+        this.idAdministrador = idAdministrador;
+    }
+
+    // Getter y Setter
+    public int getIdAdministrador() {
+        return idAdministrador;
+    }
+
+    public void setIdAdministrador(int idAdministrador) {
+        this.idAdministrador = idAdministrador;
+    }
+
+    // Métodos
+    public void analizarDatos() {
+        // Aquí iría la implementación de analizarDatos()
+    }
+}
