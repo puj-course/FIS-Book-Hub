@@ -1,5 +1,3 @@
-package puj.ads;
-
 public class biblioteacario {
 
     int idBibliotecario;
@@ -10,6 +8,8 @@ public class biblioteacario {
 
     }
     public void verificarRetrasos(){}
+
+    public void registrarDevolucion(Prestamo prestamo){}
 
 
 }
