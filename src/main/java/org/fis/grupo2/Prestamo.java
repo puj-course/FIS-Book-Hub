@@ -34,7 +34,10 @@ public class Prestamo {
         return usuario;
     }
 
-
+   public void registrarDevolucion() {
+    this.estado = "Devuelto";
+    System.out.println("Devolución registrada para el libro: " + libro.getTitulo());
+}
 
 
 }
