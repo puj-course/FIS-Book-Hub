@@ -29,4 +29,8 @@ public class Administrador {
     public void cantidadPrestamosActivos() {
         // Aquí iría la implementación de cantidadPrestamosActivos()
     }
+
+    public void cantidadLibrosDevueltosUltimoMes() {
+        // Aquí iría la implementación de cantidadLibrosDevueltosUltimoMes()
+    }
 }
