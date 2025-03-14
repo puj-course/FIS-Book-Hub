@@ -12,5 +12,15 @@ public class Administrador {
         System.out.println("Usuarios con retrasos: 3");
     }
 
+    public void cantidadLibrosDisponibles() {
+        System.out.println("100 libros disponibles");
+    }
 
+    public void cantidadPrestamosActivos() {
+        System.out.println("15 préstamos activos");
+    }
+
+    public void cantidadLibrosDevueltosUltimoMes() {
+        System.out.println("5 libros devuletos");
+    }
 }
