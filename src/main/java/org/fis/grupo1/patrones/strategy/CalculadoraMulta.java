@@ -8,6 +8,9 @@ public class CalculadoraMulta {
     }
 
     public double calcularMulta(int dias) {
+        if (estrategia == null) {
+            throw new IllegalStateException("La estrategia no ha sido configurada.");
+        }
         return estrategia.calcular(dias);
     }
 }
