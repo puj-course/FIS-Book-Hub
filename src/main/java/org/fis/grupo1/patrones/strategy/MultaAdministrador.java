@@ -1,8 +1,8 @@
 package patterns.strategy;
 
-public class MultaEstudiante implements EstrategiaMulta {
+public class MultaAdministrador implements EstrategiaMulta {
     @Override
     public double calcular(int diasRetraso) {
-        return diasRetraso * 500;
+        return diasRetraso * 300;
     }
 }
