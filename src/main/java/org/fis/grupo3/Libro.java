@@ -31,6 +31,10 @@ public class Libro {
         catalogo.add(this);
         System.out.println("Libro registrado: " + this.getTitulo());
     }
-    
+
+    public String getDescripcion() {
+    return this.titulo + " por " + this.autor;
+}
+
 
 }
