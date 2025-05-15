@@ -1,3 +1,5 @@
+package org.fis.grupo3;
+
 import java.time.LocalDate;
 
 public class PrestamoMediator {
