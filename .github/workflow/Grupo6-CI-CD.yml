@@ -1,1 +1,27 @@
+name: CI/CD - FIS BookHub Grupo6
+
+on:
+  push:
+    branches:
+      - grupo6
+  pull_request:
+    branches:
+      - grupo6
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Ejecutar pruebas unitarias
+        run: mvn test
 
