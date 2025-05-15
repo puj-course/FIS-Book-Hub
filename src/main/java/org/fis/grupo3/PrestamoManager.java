@@ -1,3 +1,5 @@
+package org.fis.grupo3;
+
 public class PrestamoManager {
     private static int contadorPrestamos = 1;
 
