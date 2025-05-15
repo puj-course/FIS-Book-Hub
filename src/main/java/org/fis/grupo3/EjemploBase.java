@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Administrador admin = Administrador.getInstancia(1, "Admin", "admin@bookhub.com");
@@ -83,4 +81,3 @@ public class Main {
             }
         }
     }
-}
