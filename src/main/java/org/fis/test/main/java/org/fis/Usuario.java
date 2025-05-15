@@ -39,6 +39,7 @@ class UsuarioTest {
     }
 
     @Test
+    
     @DisplayName("5. solicitarPrestamo no lanza excepción")
     void testSolicitarPrestamo() {
         assertDoesNotThrow(() -> u.solicitarPrestamo(dummyLibro));
