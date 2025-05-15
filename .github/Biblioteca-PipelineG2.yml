@@ -1,0 +1,56 @@
+name: CI/CD - Java Maven Grupo2 Biblioteca Pipeline
+
+on:
+  push:
+    branches: [ Grupo2 ]
+  pull_request:
+    branches: [ Grupo2 ]
+
+jobs:
+  build:
+    name: Compilar, probar y empaquetar
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Compilar y ejecutar pruebas
+        run: mvn clean verify
+
+      - name: Guardar artefacto
+        uses: actions/upload-artifact@v3
+        with:
+          name: grupo2-app
+          path: target/*.jar
+
+  deploy:
+    name: Publicar en GitHub Releases
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Descargar artefacto del build
+        uses: actions/download-artifact@v3
+        with:
+          name: grupo2-app
+
+      - name: Crear release en GitHub
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "Release ${{ github.run_number }}"
+          tag_name: "v${{ github.run_number }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Subir el .jar como asset
+        run: gh release upload "v${{ github.run_number }}" *.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
