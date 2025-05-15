@@ -1,14 +1,33 @@
-package org.fis;
+// ===================
+// CLASE BIBLIOTECARIO
+// ===================
+class Bibliotecario {
+    PrestamoFactory prestamoFactory;
+    Notificador notificador;
 
-public class Bibliotecario {
-    
-    private int idBibliotecario;
-    
-    public void registrarLibro(Libro libro) {                //registra un nuevo libro en la biblioteca
+    public Bibliotecario(PrestamoFactory factory, Notificador notificador) {
+        this.prestamoFactory = factory;
+        this.notificador = notificador;
     }
-    public void verificarRetrasos() {            //verifica las fechas de los prestamos activos y determina si estan en retraso
+
+    public Prestamo registrarPrestamo(Usuario usuario, Libro libro) {
+        if (libro.numeroCopiasDisponibles <= 0) {
+            System.out.println("No hay copias disponibles");
+            return null;
+        }
+        Prestamo prestamo = prestamoFactory.crearPrestamo(usuario, libro);
+        libro.actualizarCopiasDisponibles(-1);
+        notificador.enviarMensaje("Préstamo registrado para " + usuario.nombre);
+        return prestamo;
     }
-    public int registrarDevoluciones() {              //registra devolucion de un libro y hace que el prestamo ya no aparesca activo   
+
+    public void registrarDevolucion(Prestamo prestamo, Libro libro) {
+        libro.actualizarCopiasDisponibles(1);
+        prestamo.estado = "Devuelto";
+        if (prestamo.verificarRetraso()) {
+            notificador.enviarMensaje("Usuario " + prestamo.usuario.nombre + " devolvió con retraso.");
+        } else {
+            notificador.enviarMensaje("Devolución exitosa de " + prestamo.usuario.nombre);
+        }
     }
-    
 }
