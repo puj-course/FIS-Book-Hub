@@ -40,4 +40,9 @@ public class Prestamo {
 }
 
 
+public Usuario getUsuario() { return usuario; }
+public Libro   getLibro()   { return libro; }
+public String  getEstado()  { return estado; }
+
 }
+
