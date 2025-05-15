@@ -20,6 +20,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Configurar caché de Maven
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
       - name: Instalar dependencias y compilar
         run: mvn clean install
@@ -32,3 +39,10 @@ jobs:
         run: |
           echo "Resultados de las pruebas:"
           cat target/surefire-reports/*.txt
+
+      - name: Verificar cobertura de pruebas
+        run: mvn jacoco:report
+
+      - name: Publicar cobertura de código
+        run: |
+          echo "Cobertura generada en target/site/jacoco/index.html"
