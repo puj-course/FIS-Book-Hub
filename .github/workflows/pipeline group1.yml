@@ -2,9 +2,9 @@ name: Java CI - FIS-BooK-Hub Pipeline
 
 on:
   push:
-    branches: [ "grupo1" ]
+    branches: [ "grupo1" , "main" ]
   pull_request:
-    branches: [ "grupo1" ]
+    branches: [ "grupo1", "main" ]
 
 jobs:
   process-and-report:
