@@ -1,16 +1,25 @@
-package org.fis;
+// ===================
+// CLASE PRESTAMO
+// ===================
+class Prestamo {
+    Usuario usuario;
+    Libro libro;
+    Date fechaPrestamo;
+    Date fechaDevolucionEstimada;
+    String estado;
 
-public class Prestamo {
-    // Este archivo es solo un ejemplo. No lo modifiques.
-    // Coloca tu código en un nuevo archivo java en tu propia carpeta de grupo dentro de /fis.
-    private Usuario usuario;
-    private Libro libro;
-    private Date fechaPrestamo;
-    private Date fechaDevolucionEstimada;
-    private String estado;
-    
-    public void verificarRetrasos() {            //verifica las fechas de los prestamos activos y determina si estan en retraso
+    public Prestamo(Usuario usuario, Libro libro) {
+        this.usuario = usuario;
+        this.libro = libro;
+        this.fechaPrestamo = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(fechaPrestamo);
+        cal.add(Calendar.DAY_OF_MONTH, 15);
+        this.fechaDevolucionEstimada = cal.getTime();
+        this.estado = "Activo";
     }
-    public int registrarDevoluciones() {              //registra devolucion de un libro y hace que el prestamo ya no aparesca activo 
 
+    public boolean verificarRetraso() {
+        return usuario.tieneRetraso(fechaPrestamo, fechaDevolucionEstimada);
+    }
 }
