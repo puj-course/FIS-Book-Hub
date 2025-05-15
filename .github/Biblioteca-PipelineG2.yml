@@ -1,43 +1,43 @@
-name: CI/CD - Java Maven Grupo2 Biblioteca Pipeline
+name: CI/CD - Java Maven Grupo2 Bookhub Pipeline
 
 on:
   push:
-    branches: [ Grupo2 ]
+    branches: [Grupo2]
   pull_request:
-    branches: [ Grupo2 ]
+    branches: [Grupo2]
 
 jobs:
   build:
-    name: Compilar, probar y empaquetar
+    name: Build y Tests con Maven
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clonar el repositorio
+      - name: Clonar repositorio
         uses: actions/checkout@v3
 
       - name: Configurar JDK 17
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
           distribution: 'temurin'
+          java-version: '17'
 
-      - name: Compilar y ejecutar pruebas
+      - name: Ejecutar tests y construir el proyecto
         run: mvn clean verify
 
-      - name: Guardar artefacto
+      - name: Subir artefacto `.jar`
         uses: actions/upload-artifact@v3
         with:
           name: grupo2-app
           path: target/*.jar
 
   deploy:
-    name: Publicar en GitHub Releases
+    name: Deploy a GitHub Releases
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: Descargar artefacto del build
+      - name: Descargar artefacto `.jar` del build
         uses: actions/download-artifact@v3
         with:
           name: grupo2-app
@@ -45,12 +45,12 @@ jobs:
       - name: Crear release en GitHub
         uses: softprops/action-gh-release@v1
         with:
-          name: "Release ${{ github.run_number }}"
+          name: "Release v${{ github.run_number }}"
           tag_name: "v${{ github.run_number }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Subir el .jar como asset
+      - name: Subir `.jar` al release
         run: gh release upload "v${{ github.run_number }}" *.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
