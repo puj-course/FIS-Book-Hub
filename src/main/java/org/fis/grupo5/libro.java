@@ -58,5 +58,24 @@ public class Libro {
             return new Libro(this);
         }
     }
-}
+    public String getTitulo() {
+    return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public int getAnioPublicacion() {
+        return anioPublicacion;
+    }
+
+    public int getNumeroCopiasDisponibles() {
+        return numeroCopiasDisponibles;
+    }
+
 }
