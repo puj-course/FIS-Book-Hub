@@ -1,0 +1,34 @@
+name: Java CI - FIS-BooK-Hub Pipeline
+
+on:
+  push:
+    branches: [ "grupo1" ]
+  pull_request:
+    branches: [ "grupo1" ]
+
+jobs:
+  process-and-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Configurar JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+
+      - name: Instalar dependencias y compilar
+        run: mvn clean install
+
+      - name: Ejecutar pruebas unitarias
+        run: mvn test
+
+      - name: Publicar reporte de pruebas
+        if: always()
+        run: |
+          echo "Resultados de las pruebas:"
+          cat target/surefire-reports/*.txt
