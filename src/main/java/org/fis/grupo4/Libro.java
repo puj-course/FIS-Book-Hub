@@ -1,3 +1,5 @@
+package org.fis.grupo4;
+
 public class Libro {
     // Atributos
     private String titulo;
@@ -54,6 +56,14 @@ public class Libro {
     
     public void setNumeroCopiasDisponibles(int numeroCopiasDisponibles) {
         this.numeroCopiasDisponibles = numeroCopiasDisponibles;
+    }
+    
+    public boolean isDisponible() {
+        return numeroCopiasDisponibles > 0;
+    }
+    
+    public void setDisponible(boolean disponible) {
+        this.numeroCopiasDisponibles = disponible ? 1 : 0;
     }
     
     // Métodos
