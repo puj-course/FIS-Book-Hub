@@ -30,7 +30,3 @@ jobs:
       - name: Ejecutar pruebas unitarias
         run: npm test
 
-      - name: Release imagen en Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release web --app <nombre-heroku-app>
