@@ -19,4 +19,19 @@ public class Usuario {
     public void solicitarPrestamo(Libro libro){
         //funcion encargada de solicitar un prestamo
     }
+    public Prestamo crearPrestamo(Libro libro) {
+    Date fechaPrestamo = new Date(); // hoy
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(fechaPrestamo);
+
+    // lógica diferente según tipo
+    if (tipo.equalsIgnoreCase("profesor")) {
+        calendar.add(Calendar.DAY_OF_MONTH, 30);
+    } else {
+        calendar.add(Calendar.DAY_OF_MONTH, 15);
+    }
+
+    Date fechaDevolucion = calendar.getTime();
+    return new Prestamo(this, libro, fechaPrestamo, fechaDevolucion, "activo");
+}
 }
