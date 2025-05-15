@@ -1,0 +1,36 @@
+name: CI/CD - FIS BookHub Grupo6
+
+on:
+  push:
+    branches:
+      - grupo6
+  pull_request:
+    branches:
+      - grupo6
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js (cambia si usas otro lenguaje)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Build del proyecto
+        run: npm run build
+
+      - name: Ejecutar pruebas unitarias
+        run: npm test
+
+      - name: Release imagen en Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:release web --app <nombre-heroku-app>
