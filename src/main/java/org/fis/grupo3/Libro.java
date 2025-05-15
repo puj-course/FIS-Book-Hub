@@ -5,6 +5,7 @@ public class Libro {
     private String titulo;
     private String autor;
     private boolean disponible;
+    private static List<Libro> catalogo = new ArrayList<>();
 
     public Libro(int id, String titulo, String autor) {
         this.id = id;
@@ -18,15 +19,18 @@ public class Libro {
     }
 
     public boolean isDisponible() {
-        return disponible;
+        return this.estado.equalsIgnoreCase("disponible");
     }
+    
 
     public void actualizarDisponibilidad(boolean estado) {
         this.disponible = estado;
     }
 
-    public void registrarLibro(){
-        //implementacion
+    public void registrarLibro() {
+        catalogo.add(this);
+        System.out.println("Libro registrado: " + this.getTitulo());
     }
+    
 
 }

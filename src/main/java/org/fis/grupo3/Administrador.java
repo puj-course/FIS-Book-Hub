@@ -4,16 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Administrador extends Usuario {
-    // Instancia única (Singleton)
     private static Administrador instancia;
 
-    // Constructor privado para evitar múltiples instancias
     private Administrador(int id, String nombre, String correo) {
         super(id, nombre, correo, "Administrador");
     }
 
-    // Método público estático para obtener la instancia única
-    public static Administrador getInstancia(int id, String nombre, String correo) {
+    public static synchronized Administrador getInstancia(int id, String nombre, String correo) {
         if (instancia == null) {
             instancia = new Administrador(id, nombre, correo);
         }
@@ -25,26 +22,40 @@ public class Administrador extends Usuario {
     }
 
     public void analizarDatos() {
-        // Implementación pendiente
+        System.out.println("Analizando datos de uso de la biblioteca...");
     }
 
-    public int cantidadLibrosDisponibles() {
-        // Implementación pendiente
-        return 0;
+    public int cantidadLibrosDisponibles(List<Libro> libros) {
+        int contador = 0;
+        for (Libro libro : libros) {
+            if (libro.isDisponible()) contador++;
+        }
+        return contador;
     }
 
-    public int cantidadPrestamosActivos() {
-        // Implementación pendiente
-        return 0;
+    public int cantidadPrestamosActivos(List<Prestamo> prestamos) {
+        int contador = 0;
+        for (Prestamo p : prestamos) {
+            if (!p.isDevuelto()) contador++;
+        }
+        return contador;
     }
 
-    public int cantidadLibrosDevueltosUltimoMes() {
-        // Implementación pendiente
-        return 0;
+    public int cantidadLibrosDevueltosUltimoMes(List<Prestamo> prestamos) {
+        int contador = 0;
+        for (Prestamo p : prestamos) {
+            if (p.devueltoEnUltimoMes()) contador++;
+        }
+        return contador;
     }
 
-    public List<String> listarUsuariosConRetrasos() {
-        // Implementación pendiente
-        return new ArrayList<>();
+    public List<String> listarUsuariosConRetrasos(List<Prestamo> prestamos) {
+        List<String> usuarios = new ArrayList<>();
+        for (Prestamo p : prestamos) {
+            if (p.estaAtrasado() && !usuarios.contains(p.getUsuario().getNombre())) {
+                usuarios.add(p.getUsuario().getNombre());
+            }
+        }
+        return usuarios;
     }
 }
