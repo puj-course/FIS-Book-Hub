@@ -1,17 +1,62 @@
 package org.fis;
 
-public class Administrador {
-    // Este archivo es solo un ejemplo. No lo modifiques.
-    // Coloca tu código en un nuevo archivo java en tu propia carpeta de grupo dentro de /fis.
+public class Libro {
     private String titulo;
     private String autor;
     private String genero;
-    private int añoPublicacion;
+    private int anioPublicacion;
     private int numeroCopiasDisponibles;
-    
-    public void registrarLibro() {                      //hacer el registro de un nuevo libro
+
+    // Constructor privado: solo se puede construir desde el Builder
+    private Libro(Builder builder) {
+        this.titulo = builder.titulo;
+        this.autor = builder.autor;
+        this.genero = builder.genero;
+        this.anioPublicacion = builder.anioPublicacion;
+        this.numeroCopiasDisponibles = builder.numeroCopiasDisponibles;
     }
-    public void actualizarCopiasDisponibles() {          //actualiza la cantidad de copias disponibles en le sistema
+
+    // Método para actualizar las copias
+    public void actualizarCopiasDisponibles(int cantidad) {
+        this.numeroCopiasDisponibles += cantidad;
     }
-    
+
+    // Builder interno estático
+    public static class Builder {
+        private String titulo;
+        private String autor;
+        private String genero;
+        private int anioPublicacion;
+        private int numeroCopiasDisponibles;
+
+        public Builder titulo(String titulo) {
+            this.titulo = titulo;
+            return this;
+        }
+
+        public Builder autor(String autor) {
+            this.autor = autor;
+            return this;
+        }
+
+        public Builder genero(String genero) {
+            this.genero = genero;
+            return this;
+        }
+
+        public Builder anioPublicacion(int anio) {
+            this.anioPublicacion = anio;
+            return this;
+        }
+
+        public Builder numeroCopiasDisponibles(int copias) {
+            this.numeroCopiasDisponibles = copias;
+            return this;
+        }
+
+        public Libro build() {
+            return new Libro(this);
+        }
+    }
+}
 }
